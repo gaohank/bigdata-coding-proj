@@ -1,0 +1,13 @@
+.idea
+*.iws
+*.iml
+atlassian-ide-plugin.xml
+target/
+lib_managed/
+src_managed/
+project/boot/
+.history
+.cache
+*.log
+.DS_Store
+dependency-reduced-pom.xml

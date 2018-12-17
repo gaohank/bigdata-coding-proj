@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.gaohank.program</groupId>
+    <artifactId>bigdata-coding-proj</artifactId>
+    <packaging>pom</packaging>
+    <version>${project.release.version}</version>
+
+    <!-- 默认使用的版本 -->
+    <properties>
+        <project.release.version>1.0</project.release.version>
+    </properties>
+
+    <!-- 使用-P切换快照库和发布库 -->
+    <profiles>
+        <profile>
+            <id>staging</id>
+            <!-- 设置激活条件 mvn package –Dstaging=true -->
+            <activation>
+                <property>
+                    <name>staging</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <project.release.version>1.0-SNAPSHOT</project.release.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>c3</id>
+            <activation>
+                <property>
+                    <name>c3</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <project.release.version>1.0</project.release.version>
+            </properties>
+        </profile>
+    </profiles>
+
+    <modules>
+        <module>01-redis-proj</module>
+        <module>02-hdfs-proj</module>
+        <module>03-mapreduce-proj</module>
+        <module>04-hive-proj</module>
+        <module>05-hbase-proj</module>
+        <module>06-spark-base-proj</module>
+        <module>07-sparkstreaming-proj</module>
+        <module>08-sparksql-proj</module>
+        <module>09-spark-traffic-proj</module>
+        <module>10-spark-recommonder-proj</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- 定义快照库和正式库的nexus地址 -->
+    <distributionManagement>
+        <!-- 仓库的id需要和settings.xml保持一致 -->
+        <repository>
+            <id>online</id>
+            <name>Internal Release Repository</name>
+        </repository>
+        <snapshotRepository>
+            <id>test</id>
+            <name>Internal Snapshot Repository</name>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
