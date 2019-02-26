@@ -1,6 +1,5 @@
 package cn.gaohank.program.spark.base
 
-import cn.gaohank.program.spark.base.IpLocation.{binarySearch, ip2Long}
 import org.apache.spark.{SparkConf, SparkContext}
 
 object IpLocation {
