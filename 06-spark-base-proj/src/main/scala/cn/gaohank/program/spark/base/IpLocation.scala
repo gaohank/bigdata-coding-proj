@@ -66,7 +66,7 @@ object IpLocation {
 
         val res = result.map(t => {
             (t._3, 1)
-        }).reduceByKey(_+_).sortBy(_._2, false).take(2)
+        }).reduceByKey(_+_).sortBy(_._2, ascending = false).take(2)
 
         println(res.toBuffer)
         sc.stop()
