@@ -18,6 +18,7 @@ object SqlDemo {
         import sqlContext.implicits._
         val df = studentRdd.toDF
         df.registerTempTable("student")
+        df.createOrReplaceTempView("student1")
         val res = sqlContext.sql("select * from student where age > 20 order by age desc limit 3")
         res.write.json("e://out008")
     }
